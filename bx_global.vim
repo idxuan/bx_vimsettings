@@ -155,7 +155,7 @@ if exists("&ambiwidth")
 endif
 
 " 语言编码
-language chinese_china
+"language chinese_china
 " 系统提示编码
 language messages zh_CN.UTF-8
 
