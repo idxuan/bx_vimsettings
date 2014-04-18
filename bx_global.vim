@@ -32,13 +32,38 @@ let g:mapleader = ","
 " 将剪贴板"*设为未命名寄存器，方便和其它程序复制粘贴
 set clipboard=unnamed
 
+" Vim 使用的Shell
+" if IsUnix() || IsOsx()
+"     set shell=bash
+" elseif IsCygwin()
+"     set shell=E:cygwininsh
+" endif
+
+"文件被外部的其它程序修改后自动在Vim加载
+if exists("&autoread")
+    set autoread
+endif
 "可以为不同模式分别打开鼠标:
 if exists("&mouse")
     set mouse=a
 endif
+" 永远显示带有标签页标签的行
+if exists("&showtabline")
+    set showtabline=0
+endif
+" 缓冲区切换跳到第一个打开的包含指定缓冲区的窗口，也考虑其它标签页里的窗口
+if v:version>=700
+    set switchbuf=usetab
+endif
+" 是否自动改变当前工作目录的值
+if v:version >= 703
+    set noautochdir
+endif
 
 " 从以前的编辑会话中恢复光标文件的位置
-set viminfo='10,"100,:20,%,n~/.viminfo
+set viminfo='10,"100,:200,@200,%,n~/.viminfo
+" 文件浏览器使用的目录:
+set browsedir=current
 
 " 写入已存在的文件前原文件是否备份
 set nobackup
@@ -47,25 +72,6 @@ set nowritebackup
 " 缓冲区是否使用交换文件
 set swapfile
 
-" Vim 使用的Shell
-" if IsUnix() || IsOsx()
-"     set shell=bash
-" elseif IsCygwin()
-"     set shell=E:cygwininsh
-" endif
-
-" 是否自动改变当前工作目录的值
-if v:version >= 703
-    set noautochdir
-endif
-" 文件浏览器使用的目录:
-set browsedir=current
-"文件被外部的其它程序修改后自动在Vim加载
-if exists("&autoread")
-    set autoread
-endif
-"设置冒号命令和搜索命令的命令历史列表的长度
-set history=400
 " 执行宏,寄存器和其它不通过输入的命令时屏幕不会重画
 " 另外,窗口标题的刷新也被推迟.要强迫刷新,使用":redraw"
 set lazyredraw
@@ -78,12 +84,12 @@ set backspace=eol,start,indent
 set scrolloff=3
 " 命令行补全以增强模式运行
 set wildmenu
-" 显示光标位置的行号和列号,逗号分隔
-set cmdheight=2
 " 显示行号
 set number
 " 始终显示状态行
 set laststatus=2
+" 显示命令行消息行数
+set cmdheight=2
 
 " 错误信息静音
 set noerrorbells
@@ -149,9 +155,9 @@ if exists("&ambiwidth")
 endif
 
 " 语言编码
-"language chinese_china
+language chinese_china
 " 系统提示编码
-"language messages zh_CN.UTF-8
+language messages zh_CN.UTF-8
 
 if has("gui_running")
     " 菜单编码
@@ -176,7 +182,7 @@ filetype off
 set background=dark
 
 " 装载插件配置文件
-let bx_plugins_file = g:bx_settings_path . 'bx_plugins.vim'
+let bx_plugins_file = g:bx_vimsettings_path . 'bx_plugins.vim'
 if filereadable(bx_plugins_file)
     exec 'source ' . bx_plugins_file
 endif
@@ -226,7 +232,7 @@ set tabstop=4
 set expandtab
 " 执行编辑操作,如插入 <Tab> 或者使用 <BS> 时,把 <Tab> 算作空格的数目.
 set softtabstop=4
-" 如果打开,行首的 <Tab> 根据 "shiftwidth" 插入空白
+" 行首的 <Tab> 根据 "shiftwidth" 插入空白
 set smarttab
 " 显示 TAB 键
 set list
@@ -249,9 +255,30 @@ if has("gui_running")
     endif
 endif
 
+" 引号及括号
+inoremap <silent>( ()<ESC>i
+inoremap <silent>) <C-R>=ClosePair(')')<CR>
+inoremap <silent>{ {}<ESC>i
+inoremap <silent>} <C-R>=ClosePair('}')<CR>
+inoremap <silent>[ []<ESC>i
+inoremap <silent>] <C-R>=ClosePair(']')<CR>
+"inoremap <silent>< <><ESC>i
+"inoremap <silent>> <C-R>=ClosePair('>')<CR>
+"inoremap <silent>" ""<ESC>i
+"inoremap <silent>' ''<ESC>i
+"inoremap <silent>` ``<ESC>
+
+function! ClosePair(char)
+  if getline('.')[col('.') - 1] == a:char
+    return "\<Right>"
+  else
+    return a:char
+  endif
+endf
+
 " 用于计算文件两个不同版本的 ed 风格的差异文件的表达式
 set diffexpr=MyDiff()
-function MyDiff()
+function! MyDiff()
   let opt = '-a --binary '
   if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
@@ -305,7 +332,7 @@ let use_xhtml = 1
 " 加载配置文件
 "-------------------------------------------------------------------------
 " 私人配置
-let bx_personal_file = g:bx_settings_path . 'bx_personal.vim'
+let bx_personal_file = g:bx_vimsettings_path . 'bx_personal.vim'
 if filereadable(bx_personal_file)
     exec 'source ' . bx_personal_file
 endif
@@ -318,20 +345,20 @@ if has("autocmd")
     augroup bx
         autocmd!
 
-		autocmd BufNewFile,BufRead *.go set filetype=go
-		autocmd BufNewFile,BufRead *.js,*.htc,*.c,*.tmpl,*.css inoremap $c /**<CR> **/<esc>O
-		" 补全
-		"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-		"autocmd FileType python set omnifunc=pythoncomplete#Complete
-		autocmd FileType python3 set omnifunc=python3complete#Complete
-		autocmd FileType c set omnifunc=ccomplete#Complete
-		autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-		autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-		autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-		autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+        autocmd BufNewFile,BufRead *.go set filetype=go
+        autocmd BufNewFile,BufRead *.js,*.htc,*.c,*.tmpl,*.css inoremap $c /**<CR> **/<esc>O
+        " 补全
+        "autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+        "autocmd FileType python set omnifunc=pythoncomplete#Complete
+        autocmd FileType python3 set omnifunc=python3complete#Complete
+        autocmd FileType c set omnifunc=ccomplete#Complete
+        autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+        autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+        autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
-		"autocmd FileType go autocmd BufWritePre <buffer> Fmt
-		autocmd FileType go compiler go
+        "autocmd FileType go autocmd BufWritePre <buffer> Fmt
+        autocmd FileType go compiler go
     augroup end
 endif
 

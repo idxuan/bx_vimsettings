@@ -71,19 +71,40 @@ nnoremap <Leader>,m :CtrlPMRU<CR>
 "-------------------------------------------------------------------------
 Plugin 'bufexplorer.zip'
 
-noremap <silent><F3>   <ESC>:BufExplorer<CR>                   " 打开BufExplorer窗口，全屏
-"noremap <silent><M-F7> <ESC>:BufExplorerHorizontalSplit<CR>   " 打开BufExplorer窗口，上下分割
-"noremap <silent><C-F7> <ESC>:BufExplorerVerticalSplit<CR>     " 打开BufExplorer窗口，左右分割
+" 打开BufExplorer窗口，全屏
+noremap <silent><F3> <ESC>:BufExplorer<CR>
+" 打开BufExplorer窗口，上下分割
+"noremap <silent><M-F7> <ESC>:BufExplorerHorizontalSplit<CR>
+" 打开BufExplorer窗口，左右分割
+"noremap <silent><C-F7> <ESC>:BufExplorerVerticalSplit<CR>
 
 "-------------------------------------------------------------------------
 " NerdTree 文件管理
 "-------------------------------------------------------------------------
 Plugin 'scrooloose/nerdtree'
 
-" <F4>打开NERDTree窗口，在左侧栏显示  [非插入模式]
-noremap <silent> <F4> :NERDTreeToggle<CR>
-"设置NERDTree子窗口宽度
-let g:NERDTreeWinSize = 30
+" 装饰
+let g:NERDChristmasTree=1
+" 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心
+let g:NERDTreeAutoCenter=1
+" 指定书签文件
+let g:NERDTreeBookmarksFile=g:bx_vimdata_path . 'NerdBookmarks.txt'
+" 指定鼠标模式（1.双击打开；2.单目录双文件；3.单击打开）
+let g:NERDTreeMouseMode=2
+" 是否默认显示书签列表
+let g:NERDTreeShowBookmarks=1
+" 是否默认显示文件
+let g:NERDTreeShowFiles=1
+" 是否默认显示隐藏文件
+let g:NERDTreeShowHidden=1
+" NerdTree自动更改到当前目录
+"let g:NERDTreeChDirMode=2
+" NerdTree窗口位置
+let g:NERDTreeWinPos='left'
+"设置NerdTree子窗口宽度
+let g:NERDTreeWinSize=40
+" <F2>打开NerdTree窗口，在左侧栏显示
+noremap <silent> <F2> :NERDTreeToggle<CR>
 
 "-------------------------------------------------------------------------
 " FavEx 目录和文件收藏
@@ -104,6 +125,8 @@ inoremap <C-E> <ESC>:LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>i
 "-------------------------------------------------------------------------
 Plugin 'load_template'
 
+let g:template_path=g:vimfiles_path . 'bundle/load_template/template/'
+
 "-------------------------------------------------------------------------
 " AuthorInfo 自动生成/更新文件的作者信息
 "-------------------------------------------------------------------------
@@ -118,18 +141,24 @@ if !exists('g:loaded_authorinfo')
     unlet plugin_auth_file
 endif
 
+let g:vimrc_author='Xuan Jun'
+let g:vimrc_email='idxuanjun@qq.com'
+let g:vimrc_homepage='http://blog.csdn.net/idxuanjun'
+
 "-------------------------------------------------------------------------
 " snipMate 自动补全
 "-------------------------------------------------------------------------
 Plugin 'snipMate'
+
+let g:snips_author='XuanJun'
 
 "-------------------------------------------------------------------------
 " Tagbar 标签函数
 "-------------------------------------------------------------------------
 Plugin 'Tagbar'
 
-" <F8> 打开关闭Tagbar窗口，在右侧栏显示   [非插入模式]
-nnoremap <silent><F2> :TagbarToggle<CR>
+" <F12> 打开关闭Tagbar窗口，在右侧栏显示   [非插入模式]
+nnoremap <silent><F12> :TagbarToggle<CR>
 
 "设置宽度，默认为30
 let g:tagbar_width = 30
