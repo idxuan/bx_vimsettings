@@ -223,9 +223,9 @@ let g:tagbar_type_ruby = {
 "-------------------------------------------------------------------------
 Plugin 'plasticboy/vim-markdown'
 
-nnoremap <Leader>,mc :execute '! ' . EncToChs(s:markdown_py . ' -e chinese -o xhtml1 ' . expand('%') . ' -f ' . expand('%:t:r') . '.html')<CR>
-nnoremap <Leader>,mu :execute '! ' . EncToChs(s:markdown_py . ' -e utf-8 -o xhtml1 ' . expand('%') . ' -f ' . expand('%:t:r') . '.html')<CR>
-nnoremap <Leader>,mv :execute '! ' . EncToChs('start ./' . expand('%:t:r') . '.html')<CR>
+nnoremap <Leader>,mc :execute '! ' . s:markdown_py . ' -e chinese -o xhtml1 ' . expand('%') . ' -f ' . expand('%:t:r') . '.html'<CR>
+nnoremap <Leader>,mu :execute '! ' . s:markdown_py . ' -e utf-8 -o xhtml1 ' . expand('%') . ' -f ' . expand('%:t:r') . '.html'<CR>
+nnoremap <Leader>,mv :execute '! ' . 'start ./' . expand('%:t:r') . '.html'<CR>
 
 "-------------------------------------------------------------------------
 " GoLang
