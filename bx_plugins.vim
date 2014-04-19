@@ -2,7 +2,7 @@
 " @Author  : Xuan Jun (idxuanjun@qq.com)
 " @Link    : http://blog.csdn.net/idxuanjun
 " @Date    : 2013-04-21
-" @Version : 0.1.0
+" @Version : 0.2.0
 " @Desc    : VIM 插件管理器
 "-------------------------------------------------------------------------
 
@@ -97,11 +97,13 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeShowFiles=1
 " 是否默认显示隐藏文件
 let g:NERDTreeShowHidden=0
+" 是否默认显示行号
+let NERDTreeShowLineNumbers=1
 " NerdTree自动更改到当前目录
-"let g:NERDTreeChDirMode=2
+let g:NERDTreeChDirMode=1
 " NerdTree窗口位置
 let g:NERDTreeWinPos='left'
-"设置NerdTree子窗口宽度
+" NerdTree子窗口宽度
 let g:NERDTreeWinSize=35
 " <F2>打开NerdTree窗口，在左侧栏显示
 noremap <silent> <F2> :NERDTreeToggle<CR>

@@ -2,7 +2,7 @@
 " @Author  : Xuan Jun (idxuanjun@qq.com)
 " @Link    : http://blog.csdn.net/idxuanjun
 " @Date    : 2013-04-21
-" @Version : 0.1.0
+" @Version : 0.2.0
 " @Desc    : VIM 个人设置
 "-------------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ nnoremap <silent><Leader>,h :nohlsearch<CR>
 " 快速重载配置文件
 nnoremap <silent><Leader>vs :call ExecuteGlobalSetting()<CR>
 " 切换到配置文件目录
-nnoremap <silent><Leader>vc :exec 'lcd ' . g:bx_vimsettings_path<CR>
+nnoremap <silent><Leader>vc :execute 'lcd ' . g:bx_vimsettings_path<CR>
 " 切换到当前目录
 nnoremap <silent><Leader>vd :cd %:p:h<CR>
 " 新建或打开临时文件
@@ -152,9 +152,9 @@ function! SetColorColumn()
 endfunction
 
 " 快捷输入日期格式信息（编辑模式）
-iabbrev xdatetime <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
-iabbrev xdate <C-r>=strftime("%Y-%m-%d")<CR>
-iabbrev xtime <C-r>=strftime("%H:%M:%S")<CR>
+iabbrev bxdatetime <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+iabbrev bxdate <C-r>=strftime("%Y-%m-%d")<CR>
+iabbrev bxtime <C-r>=strftime("%H:%M:%S")<CR>
 
 " 当打开的文档中含有多种语言的时候,单一使用某一种文件类型的高亮
 " 方式必然会非常难看,比如说一个介绍J2EE的文件,里面必然有Java的代

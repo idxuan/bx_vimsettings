@@ -2,7 +2,7 @@
 " @Author  : Xuan Jun (idxuanjun@qq.com)
 " @Link    : http://blog.csdn.net/idxuanjun
 " @Date    : 2013-04-21
-" @Version : 0.1.0
+" @Version : 0.2.0
 " @Desc    : VIM 主配置文件
 "-------------------------------------------------------------------------
 
