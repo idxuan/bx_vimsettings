@@ -12,7 +12,7 @@
 " Vim 字符编码，1:使用UTF-8; 0:使用系统字符集
 let g:vim_encoding_utf8 = 1
 
-" 转换命令字符串从当前编码到 chinese
+" 转换字符串从当前编码到 chinese
 function! EncToChs(filename)
     return iconv(a:filename, &encoding, 'chinese')
 endf
@@ -181,7 +181,7 @@ endif
 " 关闭文件类型，Vundle必须
 filetype off
 " 设为 "dark" 时，Vim 试图使用深色背景上看起来舒服的颜色
-" 设为 "light" 时，Vim 会试图使用在浅色背景上看起来舒服的颜色
+" 设为 "light" 时，Vim 试图使用在浅色背景上看起来舒服的颜色
 set background=dark
 
 " 装载插件配置文件

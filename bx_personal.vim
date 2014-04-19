@@ -72,8 +72,8 @@ nnoremap <silent><Leader>ve :edit $TEMP/vim_temp.txt<CR>
 " 设置当前窗口为唯一窗口
 nnoremap <silent><Leader>wo :only<CR>
 " 切换焦点到窗口
-nnoremap <silent><silent><Leader>wk <C-W><Up>
-nnoremap <silent><silent><Leader>wj <C-W><Down>
+nnoremap <silent><Leader>wk <C-W><Up>
+nnoremap <silent><Leader>wj <C-W><Down>
 nnoremap <silent><Leader>wh <C-W><Left>
 nnoremap <silent><Leader>wl <C-W><Right>
 
