@@ -12,7 +12,7 @@
 " Vim 字符编码，1:使用UTF-8; 0:使用系统字符集
 let g:vim_encoding_utf8 = 1
 
-" 转换命令字符串从 UTF-8 到 CP936
+" 转换命令字符串从 UTF-8 到 chinese
 function! EncToChs(filename)
     return iconv(a:filename, &encoding, 'chinese')
 endf
@@ -60,7 +60,7 @@ if v:version >= 703
     set noautochdir
 endif
 
-" 从以前的编辑会话中恢复光标文件的位置
+" 保存设置 viminfo 编辑会话信息
 set viminfo='10,"100,:200,@200,%,n~/.viminfo
 " 文件浏览器使用的目录:
 set browsedir=current
@@ -100,12 +100,13 @@ set t_vb=
 
 "-------------------------------------------------------------------------
 " 语言编码设置
+"-------------------------------------------------------------------------"
 " fileencodings：编码自动识别顺序
 " encoding：内部使用的字符编码方式
 " termencoding：用于屏幕显示的编码
 " fileencoding：当前文件的编码，使用此编码保存文件
-"-------------------------------------------------------------------------"
 " 国语和其他多字节语言支持
+"
 if has("multi_byte")
     set fileencodings=ucs-bom,utf-8,chinese,taiwan,japan,korea,latin1
     if v:lang =~ "^zh_CN"
@@ -154,8 +155,12 @@ if exists("&ambiwidth")
     set ambiwidth=double
 endif
 
-" 系统提示编码
-language messages zh_CN.UTF-8
+" 系统消息编码
+if IsWindows()
+    language messages zh_CN
+else
+    language messages zh_CN.UTF-8
+endif
 
 if has("gui_running")
     " 菜单编码
