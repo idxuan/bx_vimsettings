@@ -1,40 +1,36 @@
-To CSDN Blog
-============
+bx_vimsettings
+==============
 
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------
 
 * @Author  : Xuan Jun (idxuanjun@qq.com)
 * @Link    : http://blog.csdn.net/idxuanjun
 * @Date    : 2013-11-23
-* @Version : 0.0.1
-* @Desc    : 转换Sublime Text 3 的“Markdown Preview”插件生成的HTML格式至CSDN博客。
+* @Version : 0.2.0
+* @Desc    : Vim 配置文档
 
--------------------------------------------------------------------------------
+---------------------------------------------------------------------------
 
 说明
-------------------
-因为我是用Markdown写的CSDN博客，但“Markdown Preview”插件生成的HTML代码段与CSDN博客支持的格式不一致，所以自己写了个插件转换一下。
+----
 
-####没有仔细研究Sublime Text的语法，找了个例子随便改改凑合用的，没经过优化，欢迎大家更新修改。
-
-[To CSDN Blog](https://github.com/idxuanjun/ToCsdnBlog)
+自己的 Vim 配置文档，做个备份，喜欢的朋友也可以拿去修改使用。
 
 注意
 ----
-To CSDN Blog 只在 Sublime Text 3 中测试使用过，不保证 Sublime Text 2 正常使用。
 
 安装
 ----
-请将本项目打包下载，如果下载的是压缩文件需要解压缩，将文件夹名修改为 *ToCsdnBlog* ，然后将此文件夹移动到 Sublime Text 的 *Packages* 文件夹下（可通过 Sublime Text 菜单中的 Preferences > Browse Packages 找到 *Packages* 文件夹）。
-
+请将本项目打包下载，目录“bx_vimsettings”放在“vimfiles”目录下，文件“_vimrc”是主配置文件，可以移出替换你的 Vim 配置文件。如果你的路径与我的不一致，可以修改“_vimrc”主配置文件中路径以符合你的路径。
 
 使用说明
 --------
 
-###使用命令面板
-1. 按下快捷键 `Ctrl+Shift+P` 调出命令面板，输入`“Markdown Preview:Python Markdown:Export HTML in Sublime Text”`生成HTML格式博客内容；
-2. 按下快捷键 `Ctrl+Shift+P` 调出命令面板，输入`“To CSDN Blog”`将HTML格式博客内容转换CSDN博客支持的格式。
+Vim 输入法
+----------
 
-###使用快捷键
-1. 按下快捷键 `Ctrl+Shift+P` 调出命令面板，输入`“Markdown Preview:Python Markdown:Export HTML in Sublime Text”`生成HTML格式博客内容；
-2. 按下快捷键 `Alt+;,Alt+B` 将HTML格式博客内容转换CSDN博客支持的格式。
+吐槽一下，Vim 对非字母输入的用户来说太糟心了，让行云流水的输入变得磕磕碰碰的异常难受。曾经停用了两次 Vim 的使用，又舍不得捡了回来，输入法是停用最大的原因，很有些鸡肋的感觉。就算你的英文好也麻烦的很，总不能你写的都是代码和英文文档吧。不管如何，在我的环境里需要使用中文的机会太多了……
+
+受到 VimIM 的启发，最近在码能在 Vim 里能用输入法，我是用“小鹤双拼输入法”的，VimIM 太麻烦，什么云输入之类的不适合我，作者又很长时间不更新了，有些小 BUG 因为功能太繁杂修改起来也较麻烦，想着干脆自己改个适合自己的，哈哈，自己动手，丰衣足食嘛。准备以字词输入为重点，类似五笔输入，不考虑联想，用字典方式为主体架构，简单来说，就是输入字母，查找字典输出，输出什么都可以自己定义。
+
+完成后我会放在 Github 给大家共享，如果有同样需求的可以试用，欢迎到时候多提宝贵意见哈：）
