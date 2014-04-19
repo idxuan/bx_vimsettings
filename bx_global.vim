@@ -12,7 +12,7 @@
 " Vim 字符编码，1:使用UTF-8; 0:使用系统字符集
 let g:vim_encoding_utf8 = 1
 
-" 转换命令字符串从 UTF-8 到 chinese
+" 转换命令字符串从当前编码到 chinese
 function! EncToChs(filename)
     return iconv(a:filename, &encoding, 'chinese')
 endf
@@ -109,38 +109,38 @@ set t_vb=
 "
 if has("multi_byte")
     set fileencodings=ucs-bom,utf-8,chinese,taiwan,japan,korea,latin1
-    if v:lang =~ "^zh_CN"
-        set encoding=chinese
-        set termencoding=chinese
-        if &fileencoding == ''
-            set fileencoding=chinese
-        endif
-    elseif v:lang =~ "^zh_TW"
-        set encoding=taiwan
-        set termencoding=taiwan
-        if &fileencoding == ''
-            set fileencoding=taiwan
-        endif
-    elseif v:lang =~ "^ja_JP"
-        set encoding=japan
-        set termencoding=japan
-        if &fileencoding == ''
-            set fileencoding=japan
-        endif
-    elseif v:lang =~ "^ko"
-        set encoding=korea
-        set termencoding=korea
-        if &fileencoding == ''
-            set fileencoding=korea
-        endif
-    endif
-
     " 使用utf-8设置
     if g:vim_encoding_utf8 || v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
         set encoding=utf-8
         set termencoding=utf-8
         if &fileencoding == ''
             set fileencoding=utf-8
+        endif
+    else
+        if v:lang =~ "^zh_CN"
+            set encoding=chinese
+            set termencoding=chinese
+            if &fileencoding == ''
+                set fileencoding=chinese
+            endif
+        elseif v:lang =~ "^zh_TW"
+            set encoding=taiwan
+            set termencoding=taiwan
+            if &fileencoding == ''
+                set fileencoding=taiwan
+            endif
+        elseif v:lang =~ "^ja_JP"
+            set encoding=japan
+            set termencoding=japan
+            if &fileencoding == ''
+                set fileencoding=japan
+            endif
+        elseif v:lang =~ "^ko"
+            set encoding=korea
+            set termencoding=korea
+            if &fileencoding == ''
+                set fileencoding=korea
+            endif
         endif
     endif
 
