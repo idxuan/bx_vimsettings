@@ -100,7 +100,7 @@ set t_vb=
 
 "-------------------------------------------------------------------------
 " 语言编码设置
-"-------------------------------------------------------------------------"
+"-------------------------------------------------------------------------
 " fileencodings：编码自动识别顺序
 " encoding：内部使用的字符编码方式
 " termencoding：用于屏幕显示的编码
@@ -349,15 +349,15 @@ if has("autocmd")
         autocmd!
 
         autocmd BufNewFile,BufRead *.go set filetype=go
-        autocmd BufNewFile,BufRead *.js,*.htc,*.c,*.tmpl,*.css inoremap $c /**<CR> **/<esc>O
+        "autocmd BufNewFile,BufRead *.py *.pyw set filetype=python3
         " 补全
-        "autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-        "autocmd FileType python set omnifunc=pythoncomplete#Complete
-        autocmd FileType python3 set omnifunc=python3complete#Complete
-        autocmd FileType c set omnifunc=ccomplete#Complete
-        autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-        autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+        "autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
+        "autocmd FileType python     set omnifunc=pythoncomplete#Complete
+        autocmd FileType python     set omnifunc=python3complete#Complete
+        autocmd FileType c          set omnifunc=ccomplete#Complete
+        autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
+        autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
         autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
         "autocmd FileType go autocmd BufWritePre <buffer> Fmt

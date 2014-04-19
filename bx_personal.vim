@@ -28,8 +28,10 @@
 nnoremap <Leader>x :xa!<CR>
 " 保存
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>wa :wa<CR>
 " 退出
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>qa :qa<CR>
 
 " 上下左右移动（编辑模式）
 inoremap <silent><C-H> <left>
@@ -165,5 +167,12 @@ iabbrev bxtime <C-r>=strftime("%H:%M:%S")<CR>
 "nnoremap <Leader>4 :set syntax=python<CR>
 "nnoremap <Leader>5 :set ft=javascript<CR>
 "nnoremap <Leader>0 :syntax sync fromstart<CR>
+
+"-------------------------------------------------------------------------
+" 程序 Python F5
+"-------------------------------------------------------------------------
+" 运行 Python 代码
+nnoremap <silent><F5> :!python %<CR>
+inoremap <silent><F5> <ESC>:!python %<CR>a
 
 

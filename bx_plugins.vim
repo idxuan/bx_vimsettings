@@ -27,6 +27,10 @@ Plugin 'gmarik/vundle'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 
+"if !has("gui_running")
+"    let g:solarized_termcolors=256
+"endif
+
 if v:version > 601
     colorscheme solarized
     "colorscheme molokai
@@ -51,7 +55,9 @@ Plugin 'FencView.vim'
 "-------------------------------------------------------------------------
 " VimIM_Dict 字典输入
 "-------------------------------------------------------------------------
-Plugin 'idxuanjun/bx_vimim_dict'
+" 插件开发中，你可以注释它等待开发完成后你可以取消注释使用原生插件
+"Plugin 'idxuanjun/bx_vimim_dict'
+Plugin 'file://' . g:plugin_bundle_path . 'bx_vimim_dict'
 
 "-------------------------------------------------------------------------
 " CtrlP 文件，缓冲区，最近文件管理
@@ -72,11 +78,11 @@ nnoremap <Leader>,m :CtrlPMRU<CR>
 Plugin 'bufexplorer.zip'
 
 " 打开BufExplorer窗口，全屏
-noremap <silent><F3> <ESC>:BufExplorer<CR>
+noremap <silent><F4> <ESC>:BufExplorer<CR>
 " 打开BufExplorer窗口，上下分割
-"noremap <silent><M-F7> <ESC>:BufExplorerHorizontalSplit<CR>
+"noremap <silent><F4> <ESC>:BufExplorerHorizontalSplit<CR>
 " 打开BufExplorer窗口，左右分割
-"noremap <silent><C-F7> <ESC>:BufExplorerVerticalSplit<CR>
+"noremap <silent><F4> <ESC>:BufExplorerVerticalSplit<CR>
 
 "-------------------------------------------------------------------------
 " NerdTree 文件管理
@@ -132,7 +138,9 @@ let g:template_path=g:vimfiles_path . 'bundle/load_template/template/'
 "-------------------------------------------------------------------------
 " AuthorInfo 自动生成/更新文件的作者信息
 "-------------------------------------------------------------------------
-Plugin 'AuthorInfo'
+" 修改插件以符合自己使用，你可以取消注释使用原生插件
+"Plugin 'AuthorInfo'
+Plugin 'file://' . g:plugin_bundle_path . 'AuthorInfo'
 
 " Vundle 无法装载 AuthorInfo，手工载入
 if !exists('g:loaded_authorinfo')
@@ -231,11 +239,36 @@ nnoremap <Leader>,mv :execute '! ' . 'start ./' . expand('%:t:r') . '.html'<CR>
 " GoLang
 "-------------------------------------------------------------------------
 Plugin 'jnwhiteh/vim-golang'
+
 if exists($GOROOT)
     set runtimepath+=$GOROOT/misc/vim
 endif
 
 "-------------------------------------------------------------------------
+" Pydiction Python插件
+"-------------------------------------------------------------------------
+" GoLang
+"-------------------------------------------------------------------------
+Plugin 'rkulla/pydiction'
+
+let g:pydiction_location=g:plugin_bundle_path . 'pydiction/complete-dict'
+let g:pydiction_menu_height=15
+
+"-------------------------------------------------------------------------
+Plugin 'jnwhiteh/vim-golang'
+
+"-------------------------------------------------------------------------
 " ruby
 "-------------------------------------------------------------------------
 Plugin 'vim-ruby/vim-ruby'
+
+"-------------------------------------------------------------------------
+" syntastic 语法检查
+"-------------------------------------------------------------------------
+Plugin 'scrooloose/syntastic'
+
+let g:syntastic_check_on_open=1
+let g:syntastic_error_symbol='X'
+let g:syntastic_warning_symbol='?'
+let g:syntastic_enable_balloons=1
+
