@@ -132,12 +132,15 @@ nnoremap <silent><Leader>rn2 :%s/\n\{3,\}/\r\r/g<CR>:nohlsearch<CR>
 nnoremap <silent><Leader>rm :%s/\r//g<CR>:nohlsearch<CR>
 
 "----------------------------------------------------------------------
-" 杂项 ,f ,c
+" 杂项 f ,c
 "----------------------------------------------------------------------
-" 这里的意思是定义快速转换文件格式的快捷键映射
-nnoremap <Leader>,fd :set ff=dos<CR>
-nnoremap <Leader>,fu :set ff=unix<CR>
-nnoremap <Leader>,fm :set fm=mac<CR>
+" 转换文件格式（换行符）
+nnoremap <Leader>ffd :set fileformat=dos<CR>
+nnoremap <Leader>ffu :set fileformat=unix<CR>
+nnoremap <Leader>ffm :set fileformat=mac<CR>
+" 转换文件编码
+nnoremap <Leader>feu :set fileencoding=utf-8<CR>
+nnoremap <Leader>fec :set fileencoding=chinese<CR>
 
 " 按下<Leader>ch 就可以将当前光标下的列高亮，
 " 再按下一次，取消高亮；并且可以同时多列高亮

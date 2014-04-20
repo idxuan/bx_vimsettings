@@ -270,6 +270,8 @@ Plugin 'scrooloose/syntastic'
 let g:syntastic_check_on_open=1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_enable_balloons=1
+"let g:syntastic_auto_jump=2
+" Python 的语法检查使用 Pylint，未安装的注释本设置
 let g:syntastic_python_checkers=['pylint']
 let g:syntastic_error_symbol='xx'
 let g:syntastic_warning_symbol='>>'
