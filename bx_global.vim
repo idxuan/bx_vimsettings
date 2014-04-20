@@ -1,14 +1,14 @@
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " @Author  : Xuan Jun (idxuanjun@qq.com)
 " @Link    : http://blog.csdn.net/idxuanjun
 " @Date    : 2013-04-21
 " @Version : 0.2.0
 " @Desc    : VIM 主配置文件
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " 自定义全局设置
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " Vim 字符编码，1:使用UTF-8; 0:使用系统字符集
 let g:vim_encoding_utf8 = 1
 
@@ -17,9 +17,9 @@ function! EncToChs(filename)
     return iconv(a:filename, &encoding, 'chinese')
 endf
 
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " Vim 全局设置
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " 关闭兼容模式，必须
 set nocompatible
 
@@ -97,10 +97,18 @@ set noerrorbells
 set novisualbell
 " 不想要响铃也不想要闪烁
 set t_vb=
+"
+" 设为 "dark" 时，Vim 试图使用深色背景上看起来舒服的颜色
+" 设为 "light" 时，Vim 试图使用浅色背景上看起来舒服的颜色
+"if has("gui_running")
+    "set background=light
+"else
+    set background=dark
+"endif
 
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " 语言编码设置
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " fileencodings：编码自动识别顺序
 " encoding：内部使用的字符编码方式
 " termencoding：用于屏幕显示的编码
@@ -175,14 +183,12 @@ if version >= 603
     set helplang=cn
 endif
 
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " 插件管理器 Vundle
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " 关闭文件类型，Vundle必须
 filetype off
-" 设为 "dark" 时，Vim 试图使用深色背景上看起来舒服的颜色
-" 设为 "light" 时，Vim 试图使用在浅色背景上看起来舒服的颜色
-set background=dark
+
 
 " 装载插件配置文件
 let bx_plugins_file = g:bx_vimsettings_path . 'bx_plugins.vim'
@@ -197,9 +203,9 @@ if has("eval") && v:version>=600
     filetype plugin indent on
 endif
 
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " 编辑
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 "给出换行符(<EOL>)的格式
 set fileformats=unix,dos,mac
 " 不自动换行
@@ -305,69 +311,41 @@ function! MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " 语法
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " 打开语法高亮:
 syntax on
 
-" 开启折叠，设置折叠模式
-if exists("&foldenable")
-    set foldenable
-    set foldmethod=indent
-endif
-" 设置代码折叠级别
-if exists("&foldlevel")
-    set foldlevel=0
-endif
-
-" HTML entities - used by xml edit plugin
-let xml_use_xhtml = 1
-"let xml_no_auto_nesting = 1
-
-"To HTML
-let html_use_css = 0
-let html_number_lines = 0
-let use_xhtml = 1
-
-
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " 加载配置文件
-"-------------------------------------------------------------------------
-" 私人配置
+"----------------------------------------------------------------------
+" 研发相关
+let bx_developer_file = g:bx_vimsettings_path . 'bx_developer.vim'
+if filereadable(bx_developer_file)
+    exec 'source ' . bx_developer_file
+endif
+unlet bx_developer_file
+
+" 个人配置
 let bx_personal_file = g:bx_vimsettings_path . 'bx_personal.vim'
 if filereadable(bx_personal_file)
     exec 'source ' . bx_personal_file
 endif
 unlet bx_personal_file
 
-"-------------------------------------------------------------------------
-" AutoCmd
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
+" AutoCmd Group bx_global
+"----------------------------------------------------------------------
 if has("autocmd")
-    augroup bx
+    augroup bx_global
         autocmd!
-
-        autocmd BufNewFile,BufRead *.go set filetype=go
-        "autocmd BufNewFile,BufRead *.py *.pyw set filetype=python3
-        " 补全
-        "autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
-        "autocmd FileType python     set omnifunc=pythoncomplete#Complete
-        autocmd FileType python     set omnifunc=python3complete#Complete
-        autocmd FileType c          set omnifunc=ccomplete#Complete
-        autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
-        autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
-        autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
-        "autocmd FileType go autocmd BufWritePre <buffer> Fmt
-        autocmd FileType go compiler go
     augroup end
 endif
 
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 " GUI 窗口设置
-"-------------------------------------------------------------------------
+"----------------------------------------------------------------------
 if has("gui_running")
     "set guioptions-=m   " 关闭菜单栏
     set guioptions-=T   " 关闭工具栏
