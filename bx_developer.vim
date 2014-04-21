@@ -11,8 +11,8 @@
 "----------------------------------------------------------------------
 " 开启折叠，设置折叠模式
 if exists("&foldenable")
-    set nofoldenable
     set foldmethod=indent
+    set nofoldenable
 endif
 " 设置代码折叠级别
 if exists("&foldlevel")

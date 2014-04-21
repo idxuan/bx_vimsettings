@@ -231,6 +231,9 @@ let g:tagbar_type_ruby = {
 "----------------------------------------------------------------------
 Plugin 'plasticboy/vim-markdown'
 
+let g:vim_markdown_folding_disabled=0
+let g:vim_markdown_initial_foldlevel=0
+
 nnoremap <Leader>,mc :execute '! ' . s:markdown_py . ' -e chinese -o xhtml1 ' . expand('%') . ' -f ' . expand('%:t:r') . '.html'<CR>
 nnoremap <Leader>,mu :execute '! ' . s:markdown_py . ' -e utf-8 -o xhtml1 ' . expand('%') . ' -f ' . expand('%:t:r') . '.html'<CR>
 nnoremap <Leader>,mv :execute '! ' . 'start ./' . expand('%:t:r') . '.html'<CR>
