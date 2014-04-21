@@ -11,7 +11,7 @@
 "----------------------------------------------------------------------
 " 开启折叠，设置折叠模式
 if exists("&foldenable")
-    set foldenable
+    set nofoldenable
     set foldmethod=indent
 endif
 " 设置代码折叠级别
@@ -26,6 +26,20 @@ set completeopt=menuone,longest
 " 预览窗口的缺省高度
 set previewheight=10
 
+" 列高亮提示
+"set colorcolumn=72
+" 按下<Leader>,ch 就可以将当前光标下的列高亮，
+" 再按下一次，取消高亮；并且可以同时多列高亮
+nnoremap <silent><Leader>,ch :call SetColorColumn()<CR>
+function! SetColorColumn()
+    let col_num = virtcol(".")
+    let cc_list = split(&colorcolumn, ',')
+    if count(cc_list, string(col_num)) <= 0
+        execute "set colorcolumn+=".col_num
+    else
+        execute "set colorcolumn-=".col_num
+    endif
+endfunction
 "----------------------------------------------------------------------
 " AutoCmd Group bx_developer
 "----------------------------------------------------------------------
@@ -36,13 +50,13 @@ if has("autocmd")
         autocmd BufNewFile,BufRead *.go set filetype=go
         "autocmd BufNewFile,BufRead *.py *.pyw set filetype=python3
         " 补全
-        "autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
-        "autocmd FileType python     set omnifunc=pythoncomplete#Complete
-        autocmd FileType python     set omnifunc=python3complete#Complete
-        autocmd FileType c          set omnifunc=ccomplete#Complete
-        autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
-        autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
+        "autocmd FileType php    set omnifunc=phpcomplete#CompletePHP
+        "autocmd FileType python set omnifunc=pythoncomplete#Complete
+        autocmd FileType python set omnifunc=python3complete#Complete
+        autocmd FileType c      set omnifunc=ccomplete#Complete
+        autocmd FileType html   set omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType xml    set omnifunc=xmlcomplete#CompleteTags
+        autocmd FileType css    set omnifunc=csscomplete#CompleteCSS
         autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
         "autocmd FileType go autocmd BufWritePre <buffer> Fmt

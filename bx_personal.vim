@@ -132,7 +132,7 @@ nnoremap <silent><Leader>rn2 :%s/\n\{3,\}/\r\r/g<CR>:nohlsearch<CR>
 nnoremap <silent><Leader>rm :%s/\r//g<CR>:nohlsearch<CR>
 
 "----------------------------------------------------------------------
-" 杂项 f ,c
+" 杂项 f
 "----------------------------------------------------------------------
 " 转换文件格式（换行符）
 nnoremap <Leader>ffd :set fileformat=dos<CR>
@@ -141,20 +141,6 @@ nnoremap <Leader>ffm :set fileformat=mac<CR>
 " 转换文件编码
 nnoremap <Leader>feu :set fileencoding=utf-8<CR>
 nnoremap <Leader>fec :set fileencoding=chinese<CR>
-
-" 按下<Leader>ch 就可以将当前光标下的列高亮，
-" 再按下一次，取消高亮；并且可以同时多列高亮
-nnoremap <silent><Leader>,ch :call SetColorColumn()<CR>
-
-function! SetColorColumn()
-    let col_num = virtcol(".")
-    let cc_list = split(&cc, ',')
-    if count(cc_list, string(col_num)) <= 0
-        execute "set cc+=".col_num
-    else
-        execute "set cc-=".col_num
-    endif
-endfunction
 
 " 快捷输入日期格式信息（编辑模式）
 iabbrev bxdatetime <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
