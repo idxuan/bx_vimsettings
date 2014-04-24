@@ -264,26 +264,25 @@ if has("gui_running")
     endif
 endif
 
-" 引号及括号
-inoremap <silent>( ()<ESC>i
-inoremap <silent>) <C-R>=ClosePair(')')<CR>
-inoremap <silent>{ {}<ESC>i
-inoremap <silent>} <C-R>=ClosePair('}')<CR>
-inoremap <silent>[ []<ESC>i
-inoremap <silent>] <C-R>=ClosePair(']')<CR>
+" 引号及括号，因为对块操作有影响，找到解决办法前取消使用
+"inoremap <silent>( ()<ESC>i
+"inoremap <silent>) <C-R>=ClosePair(')')<CR>
+"inoremap <silent>{ {}<ESC>i
+"inoremap <silent>} <C-R>=ClosePair('}')<CR>
+"inoremap <silent>[ []<ESC>i
+"inoremap <silent>] <C-R>=ClosePair(']')<CR>
 "inoremap <silent>< <><ESC>i
 "inoremap <silent>> <C-R>=ClosePair('>')<CR>
 "inoremap <silent>" ""<ESC>i
 "inoremap <silent>' ''<ESC>i
 "inoremap <silent>` ``<ESC>
-
-function! ClosePair(char)
-  if getline('.')[col('.') - 1] == a:char
-    return "\<Right>"
-  else
-    return a:char
-  endif
-endf
+"function! ClosePair(char)
+  "if getline('.')[col('.') - 1] == a:char
+    "return "\<Right>"
+  "else
+    "return a:char
+  "endif
+"endf
 
 " 用于计算文件两个不同版本的 ed 风格的差异文件的表达式
 set diffexpr=MyDiff()

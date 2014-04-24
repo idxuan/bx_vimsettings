@@ -34,10 +34,10 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>qa :qa<CR>
 
 " 上下左右移动（编辑模式）
-inoremap <silent><C-H> <left>
-inoremap <silent><C-L> <right>
-inoremap <silent><C-J> <C-O>gj
-inoremap <silent><C-K> <C-O>gk
+"inoremap <silent><C-H> <left>
+"inoremap <silent><C-L> <right>
+"inoremap <silent><C-J> <C-O>gj
+"inoremap <silent><C-K> <C-O>gk
 
 " 将光标以后文本分割到下一行
 nnoremap <silent><Leader>j :set paste<CR>i<CR><Esc>:set nopaste<CR>h
@@ -66,7 +66,7 @@ nnoremap <silent><Leader>vc :execute 'lcd ' . g:bx_vimsettings_path<CR>
 " 切换到当前目录
 nnoremap <silent><Leader>vd :cd %:p:h<CR>
 " 新建或打开临时文件
-nnoremap <silent><Leader>ve :edit $TEMP/vim_temp.txt<CR>
+nnoremap <silent><Leader>ve :edit $TEMP/vim_temp.md<CR>
 
 "----------------------------------------------------------------------
 " 窗口 w
@@ -147,13 +147,4 @@ iabbrev bxdatetime <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 iabbrev bxdate <C-r>=strftime("%Y-%m-%d")<CR>
 iabbrev bxtime <C-r>=strftime("%H:%M:%S")<CR>
 
-" 当打开的文档中含有多种语言的时候,单一使用某一种文件类型的高亮
-" 方式必然会非常难看,比如说一个介绍J2EE的文件,里面必然有Java的代
-" 码,也会存在很多XML的代码,这个时候需要随时切换不同的高亮方案
-"nnoremap <Leader>1 :set syntax=java<CR>
-"nnoremap <Leader>2 :set syntax=c<CR>
-"nnoremap <Leader>3 :set syntax=xhtml<CR>
-"nnoremap <Leader>4 :set syntax=python<CR>
-"nnoremap <Leader>5 :set ft=javascript<CR>
-"nnoremap <Leader>0 :syntax sync fromstart<CR>
 

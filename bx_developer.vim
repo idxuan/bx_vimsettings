@@ -44,25 +44,59 @@ endfunction
 " AutoCmd Group bx_developer
 "----------------------------------------------------------------------
 if has("autocmd")
-    augroup bx_developer
+    augroup bx_dev_golang
         autocmd!
-
         autocmd BufNewFile,BufRead *.go set filetype=go
-        "autocmd BufNewFile,BufRead *.py *.pyw set filetype=python3
-        " 补全
-        "autocmd FileType php    set omnifunc=phpcomplete#CompletePHP
-        "autocmd FileType python set omnifunc=pythoncomplete#Complete
+        autocmd FileType go compiler go
+        "autocmd FileType go autocmd BufWritePre <buffer> Fmt
+        autocmd BufWritePost *.go call system("ctags -R")
+    augroup end
+endif
+
+if has("autocmd")
+    augroup bx_dev_python
+        autocmd!
         autocmd FileType python set omnifunc=python3complete#Complete
-        autocmd FileType c      set omnifunc=ccomplete#Complete
+        autocmd BufWritePost *.py,*.pyw call system("ctags -R")
+    augroup end
+endif
+
+if has("autocmd")
+    augroup bx_dev_web
+        autocmd!
         autocmd FileType html   set omnifunc=htmlcomplete#CompleteTags
         autocmd FileType xml    set omnifunc=xmlcomplete#CompleteTags
         autocmd FileType css    set omnifunc=csscomplete#CompleteCSS
         autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
-        "autocmd FileType go autocmd BufWritePre <buffer> Fmt
-        autocmd FileType go compiler go
+        autocmd BufWritePost *.htm,*.html,*.xml,*.css,*.js call system("ctags -R")
     augroup end
 endif
+
+if has("autocmd")
+    augroup bx_developer
+        autocmd!
+        " 不知道是哪个插件设置 buftype=nofile，影响 ctags 使用，恢复默认
+        autocmd VimEnter * set buftype=""
+
+        "autocmd FileType php    set omnifunc=phpcomplete#CompletePHP
+        "autocmd BufWritePost *.php call system("ctags -R")
+    augroup end
+endif
+
+"----------------------------------------------------------------------
+" 快捷设置
+"----------------------------------------------------------------------
+nnoremap <silent><F6> :!ctags -R<CR>
+
+" 当打开的文档中含有多种语言的时候,单一使用某一种文件类型的高亮
+" 方式必然会非常难看,比如说一个介绍J2EE的文件,里面必然有Java的代
+" 码,也会存在很多XML的代码,这个时候需要随时切换不同的高亮方案
+"nnoremap <Leader>1 :set syntax=java<CR>
+"nnoremap <Leader>2 :set syntax=c<CR>
+"nnoremap <Leader>3 :set syntax=xhtml<CR>
+"nnoremap <Leader>4 :set syntax=python<CR>
+"nnoremap <Leader>5 :set ft=javascript<CR>
+"nnoremap <Leader>0 :syntax sync fromstart<CR>
 
 "----------------------------------------------------------------------
 " 格式化、语法、编译、运行
@@ -173,13 +207,13 @@ function! RunResult()
     endif
 endfunc
 
-" <F5> 编译
-map <F5> :call CompileCode()<CR>
-imap <F5> <ESC>:call CompileCode()<CR>a
-vmap <F5> <ESC>:call CompileCode()<CR>
 " <F6> 运行
 map <F6> :call RunResult()<CR>
 imap <F6> <ESC>:call RunResult()<CR>a
 vmap <F6> <ESC>:call RunResult()<CR>
+" <S-F6> 编译
+map <S-F6> :call CompileCode()<CR>
+imap <S-F6> <ESC>:call CompileCode()<CR>a
+vmap <S-F6> <ESC>:call CompileCode()<CR>
 
 

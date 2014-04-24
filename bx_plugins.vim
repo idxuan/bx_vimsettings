@@ -1,3 +1,12 @@
+"======================================================================
+"     FileName: bx_plugins.vim
+"         Desc: 
+"       Author: Xuan Jun (idxuanjun@qq.com)
+"         Link: http://blog.csdn.net/idxuanjun
+"      Version: 0.0.1
+"   LastChange: 2014-04-23 18:10:38
+"      History:
+"======================================================================
 "----------------------------------------------------------------------
 " @Author  : Xuan Jun (idxuanjun@qq.com)
 " @Link    : http://blog.csdn.net/idxuanjun
@@ -60,29 +69,15 @@ Plugin 'FencView.vim'
 Plugin 'file://' . g:plugin_bundle_path . 'bx_vimim_dict'
 
 "----------------------------------------------------------------------
-" CtrlP 文件，缓冲区，最近文件管理
-
+" CtrlP 文件，缓冲区，最近文件管理 pf pb pm
 "----------------------------------------------------------------------
 Plugin 'ctrlp.vim'
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_by_filename = 1
-
-nnoremap <Leader>,f :CtrlP<CR>
-nnoremap <Leader>,b :CtrlPBuffer<CR>
-nnoremap <Leader>,m :CtrlPMRU<CR>
-
-"----------------------------------------------------------------------
-" Buffer Explorer 缓冲区管理
-"----------------------------------------------------------------------
-Plugin 'bufexplorer.zip'
-
-" 打开BufExplorer窗口，全屏
-noremap <silent><F4> <ESC>:BufExplorer<CR>
-" 打开BufExplorer窗口，上下分割
-"noremap <silent><F4> <ESC>:BufExplorerHorizontalSplit<CR>
-" 打开BufExplorer窗口，左右分割
-"noremap <silent><F4> <ESC>:BufExplorerVerticalSplit<CR>
+let g:ctrlp_map = '<F2>'
+noremap <silent><C-F2> <ESC>:CtrlPBuffer<CR>
+noremap <silent><S-F2> <ESC>:CtrlPMRU<CR>
 
 "----------------------------------------------------------------------
 " NerdTree 文件管理
@@ -112,7 +107,20 @@ let g:NERDTreeWinPos='left'
 " NerdTree子窗口宽度
 let g:NERDTreeWinSize=35
 " <F2>打开NerdTree窗口，在左侧栏显示
-noremap <silent> <F2> :NERDTreeToggle<CR>
+noremap <silent> <F3> :NERDTreeToggle<CR>
+
+"----------------------------------------------------------------------
+" Buffer Explorer 缓冲区管理
+"----------------------------------------------------------------------
+Plugin 'bufexplorer.zip'
+
+let g:bufExplorerDisableDefaultKeyMapping=1
+" 打开BufExplorer窗口，全屏
+noremap <silent><S-F3> <ESC>:BufExplorer<CR>
+" 打开BufExplorer窗口，上下分割
+"noremap <silent><S-F3> <ESC>:BufExplorerHorizontalSplit<CR>
+" 打开BufExplorer窗口，左右分割
+"noremap <silent><S-F3> <ESC>:BufExplorerVerticalSplit<CR>
 
 "----------------------------------------------------------------------
 " FavEx 目录和文件收藏
@@ -120,13 +128,12 @@ noremap <silent> <F2> :NERDTreeToggle<CR>
 Plugin 'FavEx'
 
 "----------------------------------------------------------------------
-" NerdCommenter 注释
+" NerdCommenter 注释 pc
 "----------------------------------------------------------------------
 Plugin 'scrooloose/nerdcommenter'
 
 " Ctrl+E 一步加载语法模板和作者、时间信息
-noremap <C-E> <ESC>:LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>i
-inoremap <C-E> <ESC>:LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>i
+nnoremap <silent><Leader>pc :LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>
 
 "----------------------------------------------------------------------
 " load_template 加载文件模板
@@ -167,8 +174,8 @@ let g:snips_author='XuanJun'
 "----------------------------------------------------------------------
 Plugin 'Tagbar'
 
-" <F12> 打开关闭Tagbar窗口，在右侧栏显示   [非插入模式]
-nnoremap <silent><F12> :TagbarToggle<CR>
+" <F5> 打开关闭Tagbar窗口，在右侧栏显示   [非插入模式]
+nnoremap <silent><F5> :TagbarToggle<CR>
 
 "设置宽度，默认为30
 let g:tagbar_width = 30
@@ -227,16 +234,16 @@ let g:tagbar_type_ruby = {
 \ }
 
 "----------------------------------------------------------------------
-" Markdown
+" Markdown pm
 "----------------------------------------------------------------------
 Plugin 'plasticboy/vim-markdown'
 
 let g:vim_markdown_folding_disabled=0
 let g:vim_markdown_initial_foldlevel=0
 
-nnoremap <Leader>,mc :execute '! ' . s:markdown_py . ' -e chinese -o xhtml1 ' . expand('%') . ' -f ' . expand('%:t:r') . '.html'<CR>
-nnoremap <Leader>,mu :execute '! ' . s:markdown_py . ' -e utf-8 -o xhtml1 ' . expand('%') . ' -f ' . expand('%:t:r') . '.html'<CR>
-nnoremap <Leader>,mv :execute '! ' . 'start ./' . expand('%:t:r') . '.html'<CR>
+"nnoremap <Leader>pmc :execute '! ' . s:markdown_py . ' -e chinese -o xhtml1 ' . expand('%') . ' -f ' . expand('%:t:r') . '.html'<CR>
+"nnoremap <Leader>pmu :execute '! ' . s:markdown_py . ' -e utf-8 -o xhtml1 ' . expand('%') . ' -f ' . expand('%:t:r') . '.html'<CR>
+"nnoremap <Leader>pmv :execute '! ' . 'start ./' . expand('%:t:r') . '.html'<CR>
 
 "----------------------------------------------------------------------
 " GoLang
