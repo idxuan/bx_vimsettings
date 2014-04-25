@@ -86,7 +86,7 @@ endif
 "----------------------------------------------------------------------
 " 快捷设置
 "----------------------------------------------------------------------
-nnoremap <silent><F6> :!ctags -R<CR>
+nnoremap <F12> :!ctags -R<CR>
 
 " 当打开的文档中含有多种语言的时候,单一使用某一种文件类型的高亮
 " 方式必然会非常难看,比如说一个介绍J2EE的文件,里面必然有Java的代
@@ -177,6 +177,26 @@ function! RunPython()
     execute "!python %"
 endfunc
 
+" 编译 Markdown 代码，需要 markdown_py 支持
+function! CompileMarkdown()
+    let htmfn = g:bx_cache_path . expand('%:t:r') . '.htm'
+    let headmsg = '<meta http-equiv="content-type" content="text/html; charset=utf-8">'
+    execute '!markdown_py.bat -e utf-8 -o xhtml1 ' . expand('%') . ' -f ' . htmfn
+    let flist = readfile(htmfn)
+    call insert(flist, headmsg)
+    call writefile(flist, htmfn)
+endfunc
+
+" 运行 Markdown 代码，需要 markdown_py 支持
+function! RunMarkdown()
+    let htmfn = g:bx_cache_path . expand('%:t:r') . '.htm'
+    if !filereadable(htmfn)
+        call CompileMarkdown()
+    endif
+    execute '!start cmd.exe /c ' . htmfn
+endfunc
+
+
 " 编译
 function! CompileCode()
     execute "w"
@@ -188,6 +208,8 @@ function! CompileCode()
         call CompileJava()
     elseif &filetype == "python"
         call RunPython()
+    elseif &filetype == "mkd"
+        call CompileMarkdown()
     endif
 endfunc
 
@@ -204,6 +226,8 @@ function! RunResult()
         call RunJava()
     elseif &filetype == "python"
         call RunPython()
+    elseif &filetype == "mkd"
+        call RunMarkdown()
     endif
 endfunc
 
@@ -215,5 +239,3 @@ vmap <F6> <ESC>:call RunResult()<CR>
 map <S-F6> :call CompileCode()<CR>
 imap <S-F6> <ESC>:call CompileCode()<CR>a
 vmap <S-F6> <ESC>:call CompileCode()<CR>
-
-

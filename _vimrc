@@ -25,11 +25,12 @@ endfunction
 
 " ！！！！！！！！！！！！！！！ 注  意 ！！！！！！！！！！！！！！！
 "----------------------------------------------------------------------
-" 非特殊说明，配置文件中所有路径分割符字符采用 Unix 路径
-" 分隔符斜杠“/”描述，而不是 Windows 路径分隔符反斜杠“\” 。
+" 非特殊说明，配置文件中所有路径分割符字符采用 Windows/Unix 都能识别的
+" 路径分隔符斜杠“/”描述，而不是 Windows 路径分隔符反斜杠“\” 。
 "----------------------------------------------------------------------
 
-" 转换 Windows 路径分割字符
+" 转换 Windows 路径分隔字符
+" 请在路径转义前调用
 function! ToSlash(pathstr)
     return tr(a:pathstr, '\', '/')
 endfunction
@@ -54,17 +55,19 @@ endif
 let g:plugin_bundle_path = g:vimfiles_path . 'bundle/'
 
 " 数据文件路径
-let g:bx_vimdata_path = g:vimfiles_path . 'bx_data/'
+let g:bx_data_path = g:vimfiles_path . 'bx_data/'
+
+" 缓存文件路径
+let g:bx_cache_path = g:vimfiles_path . 'bx_cache/'
 
 " 配置文件路径
-let g:bx_vimsettings_path = g:vimfiles_path . 'bx_vimsettings/'
+let g:bx_settings_path = g:vimfiles_path . 'bx_settings/'
+
+" 自定义临时文件路径
+let g:my_temp_path = 'd:/temp/'
 
 " 调用配置文件
-function! ExecuteGlobalSetting()
-    let bx_global_file = g:bx_vimsettings_path . 'bx_global.vim'
-    if filereadable(bx_global_file)
-        exec 'source ' . bx_global_file
-    endif
-endfunction
-
-call ExecuteGlobalSetting()
+let bx_global_file = g:bx_settings_path . 'bx_global.vim'
+if filereadable(bx_global_file)
+    exec 'source ' . bx_global_file
+endif

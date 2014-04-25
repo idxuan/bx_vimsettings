@@ -189,9 +189,8 @@ endif
 " 关闭文件类型，Vundle必须
 filetype off
 
-
 " 装载插件配置文件
-let bx_plugins_file = g:bx_vimsettings_path . 'bx_plugins.vim'
+let bx_plugins_file = g:bx_settings_path . 'bx_plugins.vim'
 if filereadable(bx_plugins_file)
     exec 'source ' . bx_plugins_file
 endif
@@ -320,14 +319,14 @@ syntax on
 " 加载配置文件
 "----------------------------------------------------------------------
 " 研发相关
-let bx_developer_file = g:bx_vimsettings_path . 'bx_developer.vim'
+let bx_developer_file = g:bx_settings_path . 'bx_developer.vim'
 if filereadable(bx_developer_file)
     exec 'source ' . bx_developer_file
 endif
 unlet bx_developer_file
 
 " 个人配置
-let bx_personal_file = g:bx_vimsettings_path . 'bx_personal.vim'
+let bx_personal_file = g:bx_settings_path . 'bx_personal.vim'
 if filereadable(bx_personal_file)
     exec 'source ' . bx_personal_file
 endif

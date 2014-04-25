@@ -89,7 +89,7 @@ let g:NERDChristmasTree=1
 " 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心
 let g:NERDTreeAutoCenter=1
 " 指定书签文件
-let g:NERDTreeBookmarksFile=g:bx_vimdata_path . 'NerdBookmarks.txt'
+let g:NERDTreeBookmarksFile=g:bx_data_path . 'NerdBookmarks.txt'
 " 指定鼠标模式（1.双击打开；2.单目录双文件；3.单击打开）
 let g:NERDTreeMouseMode=2
 " 是否默认显示书签列表
@@ -240,10 +240,6 @@ Plugin 'plasticboy/vim-markdown'
 
 let g:vim_markdown_folding_disabled=0
 let g:vim_markdown_initial_foldlevel=0
-
-"nnoremap <Leader>pmc :execute '! ' . s:markdown_py . ' -e chinese -o xhtml1 ' . expand('%') . ' -f ' . expand('%:t:r') . '.html'<CR>
-"nnoremap <Leader>pmu :execute '! ' . s:markdown_py . ' -e utf-8 -o xhtml1 ' . expand('%') . ' -f ' . expand('%:t:r') . '.html'<CR>
-"nnoremap <Leader>pmv :execute '! ' . 'start ./' . expand('%:t:r') . '.html'<CR>
 
 "----------------------------------------------------------------------
 " GoLang

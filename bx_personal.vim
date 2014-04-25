@@ -60,13 +60,13 @@ nnoremap <silent><Leader>,h :nohlsearch<CR>
 " VIM v
 "----------------------------------------------------------------------
 " 快速重载配置文件
-nnoremap <silent><Leader>vs :call ExecuteGlobalSetting()<CR>
+nnoremap <silent><Leader>vs :source $MYVIMRC<CR>
 " 切换到配置文件目录
-nnoremap <silent><Leader>vc :execute 'lcd ' . g:bx_vimsettings_path<CR>
+nnoremap <silent><Leader>vc :execute 'lcd ' . g:bx_settings_path<CR>
 " 切换到当前目录
 nnoremap <silent><Leader>vd :cd %:p:h<CR>
 " 新建或打开临时文件
-nnoremap <silent><Leader>ve :edit $TEMP/vim_temp.md<CR>
+nnoremap <silent><Leader>ve :execute 'edit '. g:my_temp_path . 'vim_temp.md'<CR>
 
 "----------------------------------------------------------------------
 " 窗口 w
