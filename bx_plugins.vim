@@ -58,7 +58,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 "----------------------------------------------------------------------
 " FencView 自动识别文件的编码格式
 "----------------------------------------------------------------------
-Plugin 'FencView.vim'
+"Plugin 'FencView.vim'
 "let g:fencview_autodetect=1 " fencview 自动检测每个文件
 "
 "----------------------------------------------------------------------
@@ -112,11 +112,11 @@ noremap <silent> <F3> :NERDTreeToggle<CR>
 "----------------------------------------------------------------------
 " Buffer Explorer 缓冲区管理
 "----------------------------------------------------------------------
-Plugin 'bufexplorer.zip'
+"Plugin 'bufexplorer.zip'
 
-let g:bufExplorerDisableDefaultKeyMapping=1
+"let g:bufExplorerDisableDefaultKeyMapping=1
 " 打开BufExplorer窗口，全屏
-noremap <silent><S-F3> <ESC>:BufExplorer<CR>
+"noremap <silent><S-F3> <ESC>:BufExplorer<CR>
 " 打开BufExplorer窗口，上下分割
 "noremap <silent><S-F3> <ESC>:BufExplorerHorizontalSplit<CR>
 " 打开BufExplorer窗口，左右分割
@@ -132,7 +132,7 @@ Plugin 'FavEx'
 "----------------------------------------------------------------------
 Plugin 'scrooloose/nerdcommenter'
 
-" Ctrl+E 一步加载语法模板和作者、时间信息
+" 一步加载语法模板和作者、时间信息
 nnoremap <silent><Leader>pc :LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>
 
 "----------------------------------------------------------------------
@@ -261,12 +261,12 @@ let g:pydiction_location=g:plugin_bundle_path . 'pydiction/complete-dict'
 let g:pydiction_menu_height=15
 
 "----------------------------------------------------------------------
-Plugin 'jnwhiteh/vim-golang'
+"Plugin 'jnwhiteh/vim-golang'
 
 "----------------------------------------------------------------------
 " ruby
 "----------------------------------------------------------------------
-Plugin 'vim-ruby/vim-ruby'
+"Plugin 'vim-ruby/vim-ruby'
 
 "----------------------------------------------------------------------
 " syntastic 语法检查

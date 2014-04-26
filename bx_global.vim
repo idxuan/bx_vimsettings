@@ -30,7 +30,7 @@ let g:mapleader = ","
 "map ; :
 
 " 将剪贴板"*设为未命名寄存器，方便和其它程序复制粘贴
-set clipboard=unnamed
+"set clipboard=unnamed
 
 " Vim 使用的Shell
 " if IsUnix() || IsOsx()
