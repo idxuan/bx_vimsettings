@@ -11,6 +11,8 @@
 "----------------------------------------------------------------------
 " Vim 字符编码，1:使用UTF-8; 0:使用系统字符集
 let g:vim_encoding_utf8 = 1
+" Vim 中英文信息及帮助，1:中文; 0:英文
+let g:vim_uilang_cn = 0
 
 " 转换字符串从当前编码到 chinese
 function! EncToChs(filename)
@@ -36,7 +38,7 @@ let g:mapleader = ","
 " if IsUnix() || IsOsx()
 "     set shell=bash
 " elseif IsCygwin()
-"     set shell=E:cygwininsh
+"     set shell=D:\Platform\Cygwin\bin\mintty.exe -i /Cygwin-Terminal.ico -
 " endif
 
 "文件被外部的其它程序修改后自动在Vim加载
@@ -49,7 +51,7 @@ if exists("&mouse")
 endif
 " 永远显示带有标签页标签的行
 if exists("&showtabline")
-    set showtabline=0
+    set showtabline=1
 endif
 " 缓冲区切换跳到第一个打开的包含指定缓冲区的窗口，也考虑其它标签页里的窗口
 if v:version>=700
@@ -163,24 +165,42 @@ if exists("&ambiwidth")
     set ambiwidth=double
 endif
 
-" 系统消息编码
-if IsWindows()
-    language messages zh_CN
+if g:vim_uilang_cn
+    if g:vim_encoding_utf8
+        language messages zh_CN.UTF-8  " 系统消息编码
+        if has("gui_running")
+            set langmenu=zh_CN.UTF-8   " 菜单编码
+        endif
+    else
+        language messages zh_CN         " 系统消息编码
+        if has("gui_running")
+            set langmenu=zh_CN          " 菜单编码
+        endif
+    endif
+    if version >= 603
+        set helplang=cn                 " 中文帮助
+    endif
 else
-    language messages zh_CN.UTF-8
+    if g:vim_encoding_utf8
+        language messages en_US.UTF-8   " 系统消息编码
+        if has("gui_running")
+            set langmenu=en_US.UTF-8    " 菜单编码
+        endif
+    else
+        language messages en_US         " 系统消息编码
+        if has("gui_running")
+            set langmenu=en_US          " 菜单编码
+        endif
+    endif
+    if version >= 603
+        set helplang=en                 " 英文帮助
+    endif
 endif
 
 if has("gui_running")
-    " 菜单编码
-    set langmenu=zh_CN.UTF-8
     " 菜单乱码
     source $VIMRUNTIME/delmenu.vim
     source $VIMRUNTIME/menu.vim
-endif
-
-" 中文帮助
-if version >= 603
-    set helplang=cn
 endif
 
 "----------------------------------------------------------------------
@@ -345,7 +365,7 @@ endif
 " GUI 窗口设置
 "----------------------------------------------------------------------
 if has("gui_running")
-    "set guioptions-=m   " 关闭菜单栏
+    set guioptions-=m   " 关闭菜单栏
     set guioptions-=T   " 关闭工具栏
     set guioptions-=l   " 关闭左边滚动条
     set guioptions-=L   " 关闭垂直分隔窗口左边滚动条
