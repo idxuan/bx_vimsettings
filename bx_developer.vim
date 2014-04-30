@@ -192,9 +192,9 @@ endfunc
 " 运行 Markdown 代码，需要 markdown_py 支持
 function! RunMarkdown()
     let htmfn = g:bx_cache_path . expand('%:t:r') . '.htm'
-    if !filereadable(htmfn)
+    "if !filereadable(htmfn)
         call CompileMarkdown()
-    endif
+    "endif
     execute EncToChs('!start cmd.exe /c ' . htmfn)
 endfunc
 
