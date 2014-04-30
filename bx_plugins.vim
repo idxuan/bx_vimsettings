@@ -1,19 +1,12 @@
 "======================================================================
 "     FileName: bx_plugins.vim
-"         Desc: 
+"         Desc: VIM 插件管理器
 "       Author: Xuan Jun (idxuanjun@qq.com)
-"         Link: http://blog.csdn.net/idxuanjun
-"      Version: 0.0.1
-"   LastChange: 2014-04-23 18:10:38
+"         Link: http://idxuanjun.github.io
+"      Version: 0.2.1
+"   LastChange: 2014-04-30 20:27:58
 "      History:
 "======================================================================
-"----------------------------------------------------------------------
-" @Author  : Xuan Jun (idxuanjun@qq.com)
-" @Link    : http://blog.csdn.net/idxuanjun
-" @Date    : 2013-04-21
-" @Version : 0.2.0
-" @Desc    : VIM 插件管理器
-"----------------------------------------------------------------------
 
 "----------------------------------------------------------------------
 " Vundle 插件管理器
@@ -165,7 +158,7 @@ endif
 
 let g:vimrc_author='Xuan Jun'
 let g:vimrc_email='idxuanjun@qq.com'
-let g:vimrc_homepage='http://blog.csdn.net/idxuanjun'
+let g:vimrc_homepage='http://idxuanjun.github.io'
 
 "----------------------------------------------------------------------
 " snipMate 自动补全

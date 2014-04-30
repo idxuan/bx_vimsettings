@@ -1,10 +1,12 @@
-"----------------------------------------------------------------------
-" @Author  : Xuan Jun (idxuanjun@qq.com)
-" @Link    : http://blog.csdn.net/idxuanjun
-" @Date    : 2013-04-21
-" @Version : 0.2.0
-" @Desc    : VIM 主配置文件
-"----------------------------------------------------------------------
+"======================================================================
+"     FileName: bx_global.vim
+"         Desc: VIM 主配置文件
+"       Author: Xuan Jun (idxuanjun@qq.com)
+"         Link: http://idxuanjun.github.io
+"      Version: 0.2.1
+"   LastChange: 2014-04-30 20:27:27
+"      History:
+"======================================================================
 
 "----------------------------------------------------------------------
 " 自定义全局设置
@@ -15,8 +17,8 @@ let g:vim_encoding_utf8 = 1
 let g:vim_uilang_cn = 0
 
 " 转换字符串从当前编码到 chinese
-function! EncToChs(filename)
-    return iconv(a:filename, &encoding, 'chinese')
+function! EncToChs(msg)
+    return iconv(a:msg, &encoding, 'chinese')
 endf
 
 "----------------------------------------------------------------------
@@ -165,40 +167,41 @@ if exists("&ambiwidth")
     set ambiwidth=double
 endif
 
+" 系统消息、菜单编码，帮助语言
 if g:vim_uilang_cn
     if g:vim_encoding_utf8
-        language messages zh_CN.UTF-8  " 系统消息编码
+        language messages zh_CN.UTF-8
         if has("gui_running")
-            set langmenu=zh_CN.UTF-8   " 菜单编码
+            set langmenu=zh_CN.UTF-8
         endif
     else
-        language messages zh_CN         " 系统消息编码
+        language messages zh_CN.GBK
         if has("gui_running")
-            set langmenu=zh_CN          " 菜单编码
+            set langmenu=zh_CN.GBK
         endif
     endif
     if version >= 603
-        set helplang=cn                 " 中文帮助
+        set helplang=cn
     endif
 else
     if g:vim_encoding_utf8
-        language messages en_US.UTF-8   " 系统消息编码
+        language messages en_US.UTF-8
         if has("gui_running")
-            set langmenu=en_US.UTF-8    " 菜单编码
+            set langmenu=en_US.UTF-8
         endif
     else
-        language messages en_US         " 系统消息编码
+        language messages en_US.ISO_8859-1
         if has("gui_running")
-            set langmenu=en_US          " 菜单编码
+            set langmenu=en_US.ISO_8859-1
         endif
     endif
     if version >= 603
-        set helplang=en                 " 英文帮助
+        set helplang=en
     endif
 endif
 
 if has("gui_running")
-    " 菜单乱码
+    " 防止菜单乱码
     source $VIMRUNTIME/delmenu.vim
     source $VIMRUNTIME/menu.vim
 endif
@@ -389,7 +392,7 @@ endif
 
 " 字体
 if IsWindows()
-    set guifont=Consolas:h14
+    set guifont=YaHei\ Consolas\ HB:h14
 else
-    set guifont=Consolas\ 14
+    set guifont=YaHei\ Consolas\ HB\ h14
 endif

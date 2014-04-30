@@ -1,10 +1,12 @@
-"----------------------------------------------------------------------
-" @Author  : Xuan Jun (idxuanjun@qq.com)
-" @Link    : http://blog.csdn.net/idxuanjun
-" @Date    : 2013-04-21
-" @Version : 0.2.0
-" @Desc    : VIM 默认配置文件
-"----------------------------------------------------------------------
+"======================================================================
+"     FileName: _vimrc
+"         Desc: VIM 默认配置文件
+"       Author: Xuan Jun (idxuanjun@qq.com)
+"         Link: http://idxuanjun.github.io
+"      Version: 0.2.1
+"   LastChange: 2014-04-30 20:25:54
+"      History:
+"======================================================================
 
 " 是否OSX系统
 function! IsOsx()

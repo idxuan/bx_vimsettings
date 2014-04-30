@@ -1,10 +1,12 @@
-"----------------------------------------------------------------------
-" @Author  : Xuan Jun (idxuanjun@qq.com)
-" @Link    : http://blog.csdn.net/idxuanjun
-" @Date    : 2013-04-21
-" @Version : 0.2.0
-" @Desc    : VIM 研发相关
-"----------------------------------------------------------------------
+"======================================================================
+"     FileName: bx_developer.vim
+"         Desc: VIM 研发相关
+"       Author: Xuan Jun (idxuanjun@qq.com)
+"         Link: http://idxuanjun.github.io
+"      Version: 0.2.1
+"   LastChange: 2014-04-30 20:26:45
+"      History:
+"======================================================================
 
 "----------------------------------------------------------------------
 " 研发全局设置
@@ -181,7 +183,7 @@ endfunc
 function! CompileMarkdown()
     let htmfn = g:bx_cache_path . expand('%:t:r') . '.htm'
     let headmsg = '<meta http-equiv="content-type" content="text/html; charset=utf-8">'
-    execute '!markdown_py.bat -e utf-8 -o xhtml1 ' . expand('%') . ' -f ' . htmfn
+    execute EncToChs('!markdown_py.bat -e utf-8 -o xhtml1 ' . expand('%') . ' -f ' . htmfn)
     let flist = readfile(htmfn)
     call insert(flist, headmsg)
     call writefile(flist, htmfn)
@@ -193,7 +195,7 @@ function! RunMarkdown()
     if !filereadable(htmfn)
         call CompileMarkdown()
     endif
-    execute '!start cmd.exe /c ' . htmfn
+    execute EncToChs('!start cmd.exe /c ' . htmfn)
 endfunc
 
 
