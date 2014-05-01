@@ -4,7 +4,7 @@
 >       Author: Xuan Jun (idxuanjun@qq.com)
 >         Link: http://idxuanjun.github.io
 >      Version: 0.2.1
->   LastChange:
+>         Last: 2014-04-30 20:28:20
 >      History:
 >======================================================================
 
