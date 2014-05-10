@@ -1,7 +1,7 @@
 "======================================================================
 "     FileName: bx_global.vim
 "         Desc: VIM 主配置文件
-"       Author: Xuan Jun (idxuanjun@qq.com)
+"       Author: Xuan Jun (idxuanjun@gmail.com)
 "         Link: http://idxuanjun.github.io
 "      Version: 0.2.1
 "   LastChange: 2014-04-30 20:27:27

@@ -1,7 +1,7 @@
 "======================================================================
 "     FileName: bx_developer.vim
 "         Desc: VIM 研发相关
-"       Author: Xuan Jun (idxuanjun@qq.com)
+"       Author: Xuan Jun (idxuanjun@gmail.com)
 "         Link: http://idxuanjun.github.io
 "      Version: 0.2.1
 "   LastChange: 2014-04-30 20:26:45
@@ -29,7 +29,7 @@ set completeopt=menuone,longest
 set previewheight=10
 
 " 列高亮提示
-"set colorcolumn=72
+set colorcolumn=73
 " 按下<Leader>,ch 就可以将当前光标下的列高亮，
 " 再按下一次，取消高亮；并且可以同时多列高亮
 nnoremap <silent><Leader>,ch :call SetColorColumn()<CR>

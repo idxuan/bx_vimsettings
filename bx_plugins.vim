@@ -1,7 +1,7 @@
 "======================================================================
 "     FileName: bx_plugins.vim
 "         Desc: VIM 插件管理器
-"       Author: Xuan Jun (idxuanjun@qq.com)
+"       Author: Xuan Jun (idxuanjun@gmail.com)
 "         Link: http://idxuanjun.github.io
 "      Version: 0.2.1
 "   LastChange: 2014-04-30 20:27:58
@@ -14,6 +14,7 @@
 " :PluginList     列出已经安装的插件
 " :PluginInstall  安装所有配置文件中的插件
 " :PluginInstall! 更新所有插件
+"
 " :PluginUpdate   更新所有插件
 " :PluginSearch   搜索插件
 " :PluginClean!   根据配置文件删除插件
@@ -157,7 +158,7 @@ if !exists('g:loaded_authorinfo')
 endif
 
 let g:vimrc_author='Xuan Jun'
-let g:vimrc_email='idxuanjun@qq.com'
+let g:vimrc_email='idxuanjun@gmail.com'
 let g:vimrc_homepage='http://idxuanjun.github.io'
 
 "----------------------------------------------------------------------
@@ -165,8 +166,9 @@ let g:vimrc_homepage='http://idxuanjun.github.io'
 "----------------------------------------------------------------------
 Plugin 'snipMate'
 
-let g:snips_author='XuanJun'
-
+"ino <c-j> <c-r>=TriggerSnippet()<cr>
+"snor <c-j> <esc>i<right><c-r>=TriggerSnippet()<cr>
+let g:snips_author='Xuan Jun'
 "----------------------------------------------------------------------
 " Tagbar 标签函数
 "----------------------------------------------------------------------
@@ -230,6 +232,11 @@ let g:tagbar_type_ruby = {
         \ 'F:singleton methods'
     \ ]
 \ }
+"----------------------------------------------------------------------
+" skammer/vim-css-color
+"----------------------------------------------------------------------
+Plugin 'skammer/vim-css-color'
+let g:cssColorVimDoNotMessMyUpdatetime=1
 
 "----------------------------------------------------------------------
 " Markdown pm
