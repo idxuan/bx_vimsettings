@@ -157,7 +157,7 @@ if !exists('g:loaded_authorinfo')
     unlet plugin_auth_file
 endif
 
-let g:vimrc_author='Xuan Jun'
+let g:vimrc_author='Jun Xuan'
 let g:vimrc_email='idxuanjun@gmail.com'
 let g:vimrc_homepage='http://idxuanjun.github.io'
 
@@ -168,7 +168,7 @@ Plugin 'snipMate'
 
 "ino <c-j> <c-r>=TriggerSnippet()<cr>
 "snor <c-j> <esc>i<right><c-r>=TriggerSnippet()<cr>
-let g:snips_author='Xuan Jun'
+let g:snips_author='Jun Xuan'
 "----------------------------------------------------------------------
 " Tagbar 标签函数
 "----------------------------------------------------------------------
