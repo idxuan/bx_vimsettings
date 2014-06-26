@@ -1,8 +1,8 @@
 "======================================================================
 "     FileName: bx_personal.vim
 "         Desc: VIM 个人设置
-"       Author: Xuan Jun (idxuanjun@gmail.com)
-"         Link: http://idxuanjun.github.io
+"       Author: Jun Xuan (idxuan@hotmail.com)
+"         Link: http://idxuan.github.io
 "      Version: 0.2.1
 "   LastChange: 2014-04-30 20:24:44
 "      History:

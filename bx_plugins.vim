@@ -1,10 +1,10 @@
 "======================================================================
 "     FileName: bx_plugins.vim
 "         Desc: VIM 插件管理器
-"       Author: Xuan Jun (idxuanjun@gmail.com)
-"         Link: http://idxuanjun.github.io
+"       Author: Jun Xuan (idxuan@hotmail.com)
+"         Link: http://idxuan.github.io
 "      Version: 0.2.1
-"   LastChange: 2014-04-30 20:27:58
+"   LastChange: 2014-05-23 21:53:56
 "      History:
 "======================================================================
 
@@ -158,8 +158,8 @@ if !exists('g:loaded_authorinfo')
 endif
 
 let g:vimrc_author='Jun Xuan'
-let g:vimrc_email='idxuanjun@gmail.com'
-let g:vimrc_homepage='http://idxuanjun.github.io'
+let g:vimrc_email='idxuan@hotmail.com'
+let g:vimrc_homepage='http://idxuan.github.io'
 
 "----------------------------------------------------------------------
 " snipMate 自动补全

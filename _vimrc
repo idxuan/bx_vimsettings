@@ -1,8 +1,8 @@
 "======================================================================
 "     FileName: _vimrc
 "         Desc: VIM Ä¬ÈÏÅäÖÃÎÄ¼ş
-"       Author: Xuan Jun (idxuanjun@gmail.com)
-"         Link: http://idxuanjun.github.io
+"       Author: Jun Xuan (idxuan@hotmail.com)
+"         Link: http://idxuan.github.io
 "      Version: 0.2.1
 "   LastChange: 2014-04-30 20:25:54
 "      History:
